@@ -14,21 +14,21 @@ mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify:false
   })
   .then(console.log("Connected to MongoDB"))
   .catch((err) => console.log(err))
 
 const authRoute = require("./routes/auth")
-const userRoute = require("./routes/users")
-const postRoute = require("./routes/posts")
-const categoryRoute = require("./routes/categories")
+const userRoute = require("./routes/user")
+const quizRoute = require("./routes/quiz")
+const questionRoute = require("./routes/question")
+const responseRoute = require("./routes/response")
 
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
-app.use("/api/posts", postRoute);
-app.use("/api/categories", categoryRoute);
+app.use("/auth", authRoute);
+app.use("/users", userRoute);
+app.use("/quizzes", quizRoute);
+app.use("/quizzes", questionRoute);
+app.use("/responses", responseRoute);
 
 app.listen("5000", () => {
   console.log("Backend is running.");
